@@ -30,13 +30,13 @@ public class BookController {
         return ResponseEntity.ok(addedBook);
     }
 
-    @GetMapping("title/{title}")
-    public ResponseEntity<BookDTO> findBookByTitle(@RequestParam String title) {
+    @GetMapping("/title/{title}")
+    public ResponseEntity<BookDTO> findBookByTitle(@PathVariable String title) {
          return ResponseEntity.ok(svc.findBookByTitle(title));
     }
 
-    @GetMapping("/author")
-    public ResponseEntity<List<BookDTO>> findBookByAuthorsName(@RequestParam String name) {
+    @GetMapping("/author/{name}")
+    public ResponseEntity<List<BookDTO>> findBookByAuthorsName(@PathVariable String name) {
         return ResponseEntity.ok(svc.findBookByAuthorsName(name));
     }
 

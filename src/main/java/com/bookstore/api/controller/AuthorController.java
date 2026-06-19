@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookstore.api.dto.AuthorDTO;
@@ -29,13 +28,13 @@ public class AuthorController {
         return ResponseEntity.ok(addedAuthor);
     }
 
-    @GetMapping("id/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<AuthorDTO> findAuthorById(@PathVariable Long id) {
         return ResponseEntity.ok(svc.findAuthorById(id));
     }
 
-    @GetMapping("name/{name}")
-    public ResponseEntity<AuthorDTO> findAuthorByName(@RequestParam String name) {
+    @GetMapping("/name/{name}")
+    public ResponseEntity<AuthorDTO> findAuthorByName(@PathVariable String name) {
         return ResponseEntity.ok(svc.findAuthorByName(name));
     }
 
@@ -44,12 +43,12 @@ public class AuthorController {
         return ResponseEntity.ok(svc.findAllAuthors());
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<AuthorDTO> updateAuthor(@PathVariable Long id, @RequestBody AuthorDTO dto) {
         return ResponseEntity.ok(svc.updateAuthor(id, dto));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAuthor(@PathVariable Long id) {
         svc.deleteAuthor(id);
         return ResponseEntity.noContent().build();

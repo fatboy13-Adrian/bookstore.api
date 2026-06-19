@@ -35,6 +35,7 @@ public class BookService {
     public BookDTO addBook(BookDTO dto) {
         //Create new record manually
         Book b = new Book();
+        b.setIsbn(dto.getIsbn());
         b.setTitle(dto.getTitle());
         b.setGenre(dto.getGenre());
         b.setYear(dto.getYear());
