@@ -139,7 +139,7 @@ public class BookService {
 
         //Reject deletion if user is not an author
         if (!isAuthor)
-            throw new RuntimeException("Only author name can delete the book record");
+            throw new RuntimeException("Only author can delete the book record");
 
         //Delete book
         bookRepository.delete(b);
